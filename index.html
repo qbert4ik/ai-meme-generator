@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Meme Generator - Create hilarious memes with AI-powered generation">
+    <meta name="theme-color" content="#0f172a">
+    <title>AI Meme Generator | Create Memes with AI</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎭</text></svg>">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <span class="brand-icon">🎭</span>
+                <span class="brand-text">Meme AI</span>
+            </div>
+            
+            <ul class="navbar-menu">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#generator" class="nav-link">Generator</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#trending" class="nav-link">Trending</a></li>
+            </ul>
+            
+            <div class="navbar-actions">
+                <button class="btn-theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <a href="#gallery" class="btn btn-primary">View Saved</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Generate Memes with <span class="text-gradient">AI Magic</span>
+            </h1>
+            <p class="hero-subtitle">
+                Create hilarious, trending memes in seconds. Choose your style, let AI do the rest.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#generator" class="btn btn-primary btn-lg">Start Creating</a>
+                <button class="btn btn-secondary btn-lg" id="randomMemeBtn">
+                    <span>🎲</span> Random Meme
+                </button>
+            </div>
+            
+            <div class="hero-features">
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <span>AI Powered</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎨</span>
+                    <span>6 Styles</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📥</span>
+                    <span>Download</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💾</span>
+                    <span>Save & Share</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-showcase">
+            <div class="showcase-grid">
+                <div class="showcase-card" style="animation-delay: 0s;">
+                    <div class="showcase-image">😂</div>
+                    <p>Classic Memes</p>
+                </div>
+                <div class="showcase-card" style="animation-delay: 0.1s;">
+                    <div class="showcase-image">🎮</div>
+                    <p>Gaming Memes</p>
+                </div>
+                <div class="showcase-card" style="animation-delay: 0.2s;">
+                    <div class="showcase-image">💀</div>
+                    <p>Dark Humor</p>
+                </div>
+                <div class="showcase-card" style="animation-delay: 0.3s;">
+                    <div class="showcase-image">💻</div>
+                    <p>Programming</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Generator Section -->
+    <section id="generator" class="generator-section">
+        <div class="container">
+            <h2 class="section-title">Meme Generator</h2>
+            
+            <div class="generator-grid">
+                <!-- Input Panel -->
+                <div class="generator-panel input-panel">
+                    <div class="panel-header">
+                        <h3>Create Your Meme</h3>
+                        <span class="panel-status" id="panelStatus"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="topicInput">Topic or Idea</label>
+                        <textarea 
+                            id="topicInput" 
+                            class="input-field" 
+                            placeholder="Enter a topic, idea, or what you want to meme about..."
+                            rows="3"
+                        ></textarea>
+                        <div class="input-hint">Max 200 characters</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="styleSelect">Meme Style</label>
+                        <div class="style-grid">
+                            <button class="style-btn" data-style="classic" title="Classic Internet Meme">
+                                <span>😆</span>
+                                <span>Classic</span>
+                            </button>
+                            <button class="style-btn" data-style="genZ" title="Gen Z Meme">
+                                <span>🤡</span>
+                                <span>Gen Z</span>
+                            </button>
+                            <button class="style-btn" data-style="darkHumor" title="Dark Humor">
+                                <span>💀</span>
+                                <span>Dark</span>
+                            </button>
+                            <button class="style-btn" data-style="gaming" title="Gaming Meme">
+                                <span>🎮</span>
+                                <span>Gaming</span>
+                            </button>
+                            <button class="style-btn" data-style="programming" title="Programming Meme">
+                                <span>💻</span>
+                                <span>Code</span>
+                            </button>
+                            <button class="style-btn" data-style="history" title="History Meme">
+                                <span>📚</span>
+                                <span>History</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="templateSelect">Template</label>
+                        <div class="template-grid">
+                            <button class="template-btn" data-template="drake" title="Drake">
+                                <span>Drake</span>
+                            </button>
+                            <button class="template-btn" data-template="boyfriend" title="Distracted Boyfriend">
+                                <span>BF</span>
+                            </button>
+                            <button class="template-btn" data-template="brain" title="Expanding Brain">
+                                <span>Brain</span>
+                            </button>
+                            <button class="template-btn" data-template="cat" title="Woman Yelling at Cat">
+                                <span>Cat</span>
+                            </button>
+                            <button class="template-btn" data-template="buttons" title="Two Buttons">
+                                <span>Btns</span>
+                            </button>
+                            <button class="template-btn" data-template="random" title="Random Template">
+                                <span>🎲</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button id="generateBtn" class="btn btn-primary btn-block">
+                        <span class="btn-icon">✨</span>
+                        Generate Meme
+                    </button>
+                </div>
+                
+                <!-- Preview Panel -->
+                <div class="generator-panel preview-panel">
+                    <div class="panel-header">
+                        <h3>Preview</h3>
+                        <div class="preview-actions">
+                            <button class="btn-icon-small" id="downloadBtn" title="Download meme">
+                                📥
+                            </button>
+                            <button class="btn-icon-small" id="shareBtn" title="Share meme">
+                                📤
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-container" id="previewContainer">
+                        <div class="preview-placeholder">
+                            <span class="placeholder-icon">🎨</span>
+                            <p>Your meme will appear here</p>
+                            <small>Generate your first meme to get started</small>
+                        </div>
+                    </div>
+                    
+                    <div id="generatedContent" class="generated-content" style="display: none;">
+                        <div class="content-item">
+                            <h4>Title</h4>
+                            <p id="memeTitle"></p>
+                        </div>
+                        <div class="content-item">
+                            <h4>Top Text</h4>
+                            <p id="memeTopText"></p>
+                        </div>
+                        <div class="content-item">
+                            <h4>Bottom Text</h4>
+                            <p id="memeBottomText"></p>
+                        </div>
+                        <div class="content-item">
+                            <h4>Explanation</h4>
+                            <p id="memeExplanation"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-actions-bottom">
+                        <button id="saveBtn" class="btn btn-secondary">
+                            <span>💾</span> Save Meme
+                        </button>
+                        <button id="likeBtn" class="btn btn-outline">
+                            <span>🤍</span> Like
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editor Section -->
+    <section id="editor" class="editor-section">
+        <div class="container">
+            <h2 class="section-title">Meme Editor</h2>
+            
+            <div class="editor-container">
+                <!-- Canvas -->
+                <div class="editor-canvas">
+                    <div class="canvas-wrapper" id="canvasWrapper">
+                        <div id="memeCanvas" class="meme-canvas">
+                            <div class="canvas-placeholder">
+                                Generate a meme first to edit
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools -->
+                <div class="editor-tools">
+                    <div class="tool-group">
+                        <h4>Text Editor</h4>
+                        
+                        <div class="form-group">
+                            <label>Select Text</label>
+                            <select id="textSelect" class="input-field">
+                                <option value="">Choose text to edit...</option>
+                                <option value="top">Top Text</option>
+                                <option value="bottom">Bottom Text</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Font Size</label>
+                            <div class="slider-container">
+                                <input type="range" id="fontSizeSlider" class="slider" min="12" max="72" value="32">
+                                <span id="fontSizeValue">32px</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Font Color</label>
+                            <div class="color-picker-group">
+                                <input type="color" id="fontColorPicker" value="#ffffff" class="color-picker">
+                                <span id="colorValue">#ffffff</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Font Weight</label>
+                            <div class="button-group">
+                                <button class="btn-toggle" data-weight="normal">Normal</button>
+                                <button class="btn-toggle" data-weight="bold">Bold</button>
+                                <button class="btn-toggle" data-weight="900">Black</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-group">
+                        <h4>Add Elements</h4>
+                        <input type="text" id="emojiInput" class="input-field" placeholder="Add emoji or sticker...">
+                        <div class="emoji-grid" id="emojiGrid">
+                            <button class="emoji-btn" data-emoji="😂">😂</button>
+                            <button class="emoji-btn" data-emoji="💀">💀</button>
+                            <button class="emoji-btn" data-emoji="🤡">🤡</button>
+                            <button class="emoji-btn" data-emoji="👌">👌</button>
+                            <button class="emoji-btn" data-emoji="🔥">🔥</button>
+                            <button class="emoji-btn" data-emoji="💯">💯</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button id="resetEditorBtn" class="btn btn-outline btn-block">
+                            Reset Canvas
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roast Mode Section -->
+    <section id="roast" class="roast-section">
+        <div class="container">
+            <h2 class="section-title">AI Roast Mode</h2>
+            <p class="section-subtitle">Tell us about yourself and get roasted with memes</p>
+            
+            <div class="roast-container">
+                <div class="roast-input-panel">
+                    <textarea 
+                        id="roastInput" 
+                        class="input-field input-large" 
+                        placeholder="Describe yourself (your job, hobby, personality trait, etc.)"
+                        rows="5"
+                    ></textarea>
+                    <button id="roastBtn" class="btn btn-primary btn-lg">
+                        🔥 Roast Me!
+                    </button>
+                </div>
+                
+                <div class="roast-results" id="roastResults" style="display: none;">
+                    <div id="roastMemes" class="roast-memes-grid">
+                        <!-- Roast memes will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section id="trending" class="trending-section">
+        <div class="container">
+            <h2 class="section-title">Trending Memes</h2>
+            
+            <div class="trending-controls">
+                <button class="filter-btn active" data-filter="all">All Trends</button>
+                <button class="filter-btn" data-filter="today">Today</button>
+                <button class="filter-btn" data-filter="week">This Week</button>
+            </div>
+            
+            <div class="trending-grid" id="trendingGrid">
+                <!-- Trending memes will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="gallery-header">
+                <h2 class="section-title">Meme Gallery</h2>
+                <div class="gallery-controls">
+                    <input type="text" id="searchInput" class="input-field input-small" placeholder="Search memes...">
+                    <div class="sort-buttons">
+                        <button class="sort-btn active" data-sort="newest">
+                            <span>📅</span> Newest
+                        </button>
+                        <button class="sort-btn" data-sort="liked">
+                            <span>❤️</span> Most Liked
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-empty">
+                    <span class="empty-icon">📭</span>
+                    <p>No saved memes yet</p>
+                    <small>Generate and save your first meme!</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p id="loadingText">Generating your meme...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Modal for Meme Details -->
+    <div class="modal" id="memeModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Meme">
+                </div>
+                <div class="modal-info">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDescription"></p>
+                    <div class="modal-stats">
+                        <span id="modalDate"></span>
+                        <span id="modalLikes">0 ❤️</span>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" id="modalDownloadBtn">
+                            📥 Download
+                        </button>
+                        <button class="btn btn-secondary" id="modalShareBtn">
+                            📤 Share
+                        </button>
+                        <button class="btn btn-outline" id="modalDeleteBtn">
+                            🗑️ Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h4>🎭 Meme AI</h4>
+                    <p>Generate hilarious memes with AI-powered creation</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#generator">Generator</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#trending">Trending</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h5>Features</h5>
+                    <ul>
+                        <li><a href="#editor">Editor</a></li>
+                        <li><a href="#roast">Roast Mode</a></li>
+                        <li><a href="#trending">Trends</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h5>Share</h5>
+                    <div class="social-buttons">
+                        <button class="social-btn">𝕏</button>
+                        <button class="social-btn">📘</button>
+                        <button class="social-btn">📷</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Meme AI. All rights reserved. Made with 💜 by devs who love memes.</p>
+                <div class="footer-badges">
+                    <span>🚀 Built with vanilla JS</span>
+                    <span>🎨 Modern UI/UX</span>
+                    <span>⚡ Ultra-fast</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ai-generator.js"></script>
+    <script src="js/canvas-renderer.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
